@@ -16,7 +16,7 @@ const PDFUploadForm = ({ semester, subject }) => {
     formData.append('title', 'Unit 1');
 
     try {
-      const res = await axios.post('/api/admin/upload', formData, {
+      const res = await axios.post('/api/admin/upload-file', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

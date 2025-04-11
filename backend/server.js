@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const authRoute = require("./routes/authRoutes");
+const adminRoute = require("./routes/adminRoute");
 
 const app = express();
 
@@ -18,6 +19,7 @@ const PORT = process.env.PORT;
 app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth", authRoute);
+app.use("/api/admin", adminRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is Running on ${PORT}`);
