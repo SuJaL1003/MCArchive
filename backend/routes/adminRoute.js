@@ -1,21 +1,23 @@
 const express = require("express");
-const app = express();
 const router = express.Router();
 const path = require("path");
-const bodyParser = require("body-parser");
+const multer = require("multer");
 
 const adminController = require("../controller/adminController");
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.resolve(__dirname, "public")));
-
-const multer = require("multer");
-
-var uploader = multer({
+// Multer config
+const uploader = multer({
   storage: multer.diskStorage({}),
-  limits: { fileSize: 500000 },
+  fileFilter: (req, file, cb) => {
+    if (!file.originalname.match(/\.pdf$/)) {
+      return cb(new Error("Only PDF files are allowed!"), false);
+    }
+    cb(null, true);
+  },
+  limits: { fileSize: 100 * 1024 * 1024 }, // 5 MB limit
 });
 
+// Route
 router.post(
   "/upload-file",
   uploader.single("file"),

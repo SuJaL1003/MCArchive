@@ -1,22 +1,27 @@
 const Store = require("../models/Store");
-
 const Upload = require("../helper/upload");
 
 const uploadFile = async (req, res) => {
   try {
     const upload = await Upload.uploadFile(req.file.path);
 
-    var store = new Store({
+    const { semester, subject, unit } = req.body;
+
+    const store = new Store({
       file_url: upload.secure_url,
+      semester,
+      subject,
+      unit,
     });
-    var record = await store.save();
+
+    const record = await store.save();
     res.send({
-      succes: true,
+      success: true,
       msg: "File Uploaded Successfully!",
       data: record,
     });
   } catch (error) {
-    res.send({ succes: false, msg: error.message });
+    res.send({ success: false, msg: error.message });
   }
 };
 
