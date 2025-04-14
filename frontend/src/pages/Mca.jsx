@@ -3,18 +3,13 @@ import Layout from '../components/Layout/Layout';
 import { useNavigate } from 'react-router-dom';
 
 const subjectsBySemester = {
-  Semester1: ["Maths", "Computer Fundamentals", "C Programming", "Digital Logic"],
-  Semester2: ["Data Structures", "OOP in C++", "DBMS", "Operating Systems"],
-  Semester3: ["Java", "Web Technologies", "Software Engineering"],
+  Semester1: ["Database Management System", "Computer Organization and Architecture", "Software Engineering", "Data Structure and Algorithm","Foundation of Computer Science","Object Oriented Programming"],
+  Semester2: ["Computer Networks", "Operating Systems", "Software Testing and Quality Assurance", "AI and Machine Learning","Internet of Things","Frontend"],
+  Semester3: ["Data Analytics", "Software Project Management", "Mobile Architecture and Programming","Environmental Studies","E-commerce","Cloud Computing","Cyber Security"],
   Semester4: ["Python", "Cloud Computing", "AI & ML"],
 };
 
-const subjectsBySemester1 = {
-  Semester1: ["Maths", "Computer Fundamentals", "C Programming", "Digital Logic"],
-  Semester2: ["Data Structures", "OOP in C++", "DBMS", "Operating Systems"],
-  Semester3: ["Java", "Web Technologies", "Software Engineering"],
-  Semester4: ["Python", "Cloud Computing", "AI & ML"],
-};
+
 
 const Mca = () => {
   const [selectedSemester, setSelectedSemester] = useState("");
