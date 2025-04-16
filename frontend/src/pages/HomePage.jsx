@@ -70,7 +70,7 @@ const HomePage = () => {
   <div className="flex justify-center">
     <div className="bg-white rounded-3xl shadow-2xl p-6 w-96 text-center transition-transform transform hover:scale-105 hover:shadow-3xl">
       <img
-        src="https://shorturl.at/99PWh" // Replace with a good high-res image URL
+        src="https://shorturl.at/99PWh" 
         alt="University"
         className="rounded-2xl mb-6 w-full h-60 object-cover"
       />
