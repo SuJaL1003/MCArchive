@@ -12,6 +12,7 @@ import {
   BriefcaseIcon,
 } from "@heroicons/react/24/outline";
 import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -27,7 +28,12 @@ const HomePage = () => {
   };
 
   const navigatoToNotes = () => {
-    navigate("/mca");
+    if (!auth?.user) {
+      toast.warn("Please login to access MCA notes");
+      navigate("/login");
+    } else {
+      navigate("/mca");
+    }
   };
 
   return (
@@ -88,12 +94,18 @@ const HomePage = () => {
             </p>
           </div>
 
-          {/* PYQs Card */}
-          <Link
-            to="/pyq" // replace with your target route
+          <div
+            onClick={() => {
+              if (!auth?.user) {
+                toast.warn("Please login to access PYQs");
+                navigate("/login");
+              } else {
+                navigate("/pyq");
+              }
+            }}
             data-aos="fade-up"
             data-aos-delay="100"
-            className="bg-white p-8 rounded-3xl shadow-xl text-center hover:shadow-2xl transition-transform hover:-translate-y-2 block"
+            className="cursor-pointer bg-white p-8 rounded-3xl shadow-xl text-center hover:shadow-2xl transition-transform hover:-translate-y-2"
           >
             <div className="flex justify-center mb-6">
               <ClockIcon className="w-12 h-12 text-violet-600" />
@@ -104,7 +116,7 @@ const HomePage = () => {
             <p className="text-gray-600 text-sm">
               Understand exam patterns and boost confidence with curated PYQs.
             </p>
-          </Link>
+          </div>
 
           {/* Placement Card */}
           <Link

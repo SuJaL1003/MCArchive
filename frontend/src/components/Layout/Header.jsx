@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, User } from "lucide-react";
 import { useAuth } from "../../context/auth";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -27,9 +28,26 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 text-lg font-medium items-center">
-          <Link to="/" className="hover:text-purple-600 transition">Home</Link>
-          <Link to="/mca" className="hover:text-purple-600 transition">MCA</Link>
-          <Link to="/contact" className="hover:text-purple-600 transition">Contact</Link>
+          <Link to="/" className="hover:text-purple-600 transition">
+            Home
+          </Link>
+          <span
+            onClick={() => {
+              if (!auth?.user) {
+                toast.warn("Please login to access MCA");
+                navigate("/login");
+              } else {
+                navigate("/mca");
+              }
+            }}
+            className="cursor-pointer hover:text-purple-600 transition"
+          >
+            MCA
+          </span>
+
+          <Link to="/contact" className="hover:text-purple-600 transition">
+            Contact
+          </Link>
 
           {!auth.user ? (
             <Link
