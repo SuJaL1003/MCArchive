@@ -62,7 +62,9 @@ export default function PYQ() {
         .replace(/([a-zA-Z]+)(\d+)/, "$1 $2")
         .trim();
       const response = await fetch(
-        `/api/pdf/get-pdfs-by-subject?semester=${normalizedSemester}&subject=${subject}`
+        `${
+          import.meta.env.VITE_API_BASE_URL
+        }/api/pdf/get-pdfs-by-subject?semester=${normalizedSemester}&subject=${subject}`
       );
 
       if (!response.ok) throw new Error("Failed to fetch PDFs");

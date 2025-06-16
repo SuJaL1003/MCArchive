@@ -1,38 +1,45 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Layout from '../../components/Layout/Layout';
-import axios from 'axios';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Layout from "../../components/Layout/Layout";
+import axios from "axios";
 
 const Register = () => {
-  const [username, setUsername] = useState(""); 
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/auth/register', {
-        username,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/api/auth/register`,
+        {
+          username,
+          email,
+          password,
+        }
+      );
 
       if (res.data.success) {
         toast.success(res.data.message);
-        navigate('/login');
+        navigate("/login");
       } else {
-        toast.error(res.data.message || 'Registration failed');
+        toast.error(res.data.message || "Registration failed");
       }
     } catch (error) {
       console.error(error);
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         toast.error(error.response.data.message);
       } else {
-        toast.error('Something went wrong during registration');
+        toast.error("Something went wrong during registration");
       }
     }
   };
@@ -44,10 +51,14 @@ const Register = () => {
           onSubmit={handleRegister}
           className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg"
         >
-          <h2 className="text-2xl font-bold text-center text-purple-700 mb-6">Sign Up</h2>
+          <h2 className="text-2xl font-bold text-center text-purple-700 mb-6">
+            Sign Up
+          </h2>
 
           <div className="mb-4">
-            <label htmlFor="username" className="block font-medium mb-1">Username</label>
+            <label htmlFor="username" className="block font-medium mb-1">
+              Username
+            </label>
             <input
               type="text"
               name="username"
@@ -61,7 +72,9 @@ const Register = () => {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="email" className="block font-medium mb-1">Email</label>
+            <label htmlFor="email" className="block font-medium mb-1">
+              Email
+            </label>
             <input
               type="email"
               name="email"
@@ -74,10 +87,12 @@ const Register = () => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="password" className="block font-medium mb-1">Password</label>
+            <label htmlFor="password" className="block font-medium mb-1">
+              Password
+            </label>
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 name="password"
                 required
                 placeholder="Enter Your Password"
@@ -90,11 +105,10 @@ const Register = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 text-sm text-purple-600 hover:underline focus:outline-none"
               >
-                {showPassword ? 'Hide' : 'Show'}
+                {showPassword ? "Hide" : "Show"}
               </button>
             </div>
           </div>
-
 
           <button
             type="submit"

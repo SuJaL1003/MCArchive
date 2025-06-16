@@ -17,9 +17,13 @@ const PyqUploadForm = ({ semester, subject }) => {
 
     try {
       setLoading(true);
-      const res = await axios.post("/api/pdf/admin/upload-pyq", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/api/pdf/admin/upload-pyq`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       alert(res.data.msg || "Uploaded!");
       setFile(null);
     } catch (err) {
