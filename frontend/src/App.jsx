@@ -11,6 +11,7 @@ import "react-toastify/ReactToastify.css";
 import AdminDashboard from "./pages/AdminDashboard";
 import Pyq from "./pages/Pyq";
 import Placement from "./pages/Placement";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/mca" element={<Mca />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pyq" element={<Pyq />} />

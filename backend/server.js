@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const authRoute = require("./routes/authRoutes");
 const pdfRoute = require("./routes/pdfRoutes");
+const contactRoute = require("./routes/contactRoutes");
 
 const app = express();
 
@@ -19,6 +20,7 @@ const PORT = process.env.PORT;
 app.use("/api/auth", authRoute);
 app.use("/api/pdf", pdfRoute);
 app.use("/api/pyq", pdfRoute);
+app.use("/api/contact", contactRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is Running on ${PORT}`);

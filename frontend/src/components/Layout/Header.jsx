@@ -49,6 +49,10 @@ const Header = () => {
             Contact
           </Link>
 
+          <Link to="/about" className="hover:text-purple-600 transition">
+            About
+          </Link>
+
           {!auth.user ? (
             <Link
               to="/login"
