@@ -12,6 +12,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Pyq from "./pages/Pyq";
 import Placement from "./pages/Placement";
 import About from "./pages/About";
+import VerifyEmail from "./pages/VerifyEmail";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pyq" element={<Pyq />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/placement" element={<Placement />} />
         <Route path="/mca/:semester/:subject" element={<SubjectPage />} />
 
