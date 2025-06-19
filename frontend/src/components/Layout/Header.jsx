@@ -114,6 +114,13 @@ const Header = () => {
           >
             Contact
           </Link>
+          <Link
+            to="/about"
+            className="block hover:text-purple-600"
+            onClick={() => setMenuOpen(false)}
+          >
+            About
+          </Link>
 
           {!auth.user ? (
             <Link
