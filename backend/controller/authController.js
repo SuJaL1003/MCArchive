@@ -63,7 +63,7 @@ const registerUser = async (req, res) => {
     });
 
     // Verification link
-    const verifyUrl = `${process.env.CLIENT_URL}/api/auth/verify-email?token=${verificationToken}`;
+    const verifyUrl = `${process.env.CLIENT_URL}/verify-email?token=${verificationToken}`;
 
     // Send email
     await transporter.sendMail({
