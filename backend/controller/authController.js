@@ -22,6 +22,15 @@ const registerUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
+
+     if (!validatePassword(password)) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Password must be at least 6 characters long, include an uppercase letter and a special character.",
+      });
+    }
+    
     // Check if user already exists
     const existingUser = await User.findOne({
       $or: [{ username }, { email }],
