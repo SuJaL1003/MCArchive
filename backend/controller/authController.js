@@ -64,12 +64,12 @@ const registerUser = async (req, res) => {
 
     // Setup transporter
     const transporter = nodemailer.createTransport({
-      service: "smtp.gmail.com",
+      service: "gmail",
       auth: {
-        // user: `${process.env.MAIL_USER}`,
-        // pass: `${process.env.MAIL_PASS}`,
-        user: "localhost5173@gmail.com",
-        pass: "oskwqyffziczqpdf",
+        user: `${process.env.MAIL_USER}`,
+        pass: `${process.env.MAIL_PASS}`,
+        // user: "localhost5173@gmail.com",
+        // pass: "oskwqyffziczqpdf",
       },
     });
 
@@ -78,7 +78,7 @@ const registerUser = async (req, res) => {
 
     // Send email
     await transporter.sendMail({
-      from: `"Verify Your Email" <localhost5173@gmail.com>`,
+      from: `"Verify Your Email" <${process.env.MAIL_USER}>`,
       to: email,
       subject: "Email Verification",
       html: `<h4>Hi ${username},</h4>
